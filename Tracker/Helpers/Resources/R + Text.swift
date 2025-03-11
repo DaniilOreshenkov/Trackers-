@@ -2,9 +2,9 @@ import Foundation
 
 extension R {
     enum Text {
-        enum TabBar {
-            static let tracker = "Трекеры"
-            static let statistic = "Статистика"
-        }
+        static let tracker = "Трекеры"
+        static let statistic = "Статистика"
+        static let textNoContent = "Что будем отслеживать?"
+        static let textNothingFound = "Ничего не найдено"
     }
 }
