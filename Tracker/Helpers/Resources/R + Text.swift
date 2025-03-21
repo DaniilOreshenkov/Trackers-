@@ -2,7 +2,7 @@ import Foundation
 
 extension R {
     enum Text {
-        enum navTitle {
+        enum NavTitle {
             static let newTracker = "Создание трекера"
             static let habitTitle = "Новая привычка"
             static let eventTitle = "Новое нерегулярное событие"

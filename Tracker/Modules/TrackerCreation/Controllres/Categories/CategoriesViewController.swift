@@ -6,7 +6,7 @@ final class CategoriesViewController: UIViewController, UINavigationControllerDe
     
     var categories: [TrackerCategory] = TrackersViewController.categories
     
-    private var selectedCategory: TrackerCategory? = nil
+    private var selectedCategory: TrackerCategory?
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -60,7 +60,7 @@ final class CategoriesViewController: UIViewController, UINavigationControllerDe
         selectedCategory = nil
     }
     
-    @objc func createButtonTapped() {
+    @objc private func createButtonTapped() {
         let newCategoriesVC = NewCategoriesViewController()
         let navVC = UINavigationController(rootViewController: newCategoriesVC)
         newCategoriesVC.delegate = self

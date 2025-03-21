@@ -102,7 +102,7 @@ final class TrackersViewController: UIViewController {
         if TrackersViewController.categories.isEmpty {
             return true
         }
-        
+
         var trackersIsEmpty = true
         for category in collectionHelper.categories {
             if !category.trackers.isEmpty {
@@ -117,7 +117,7 @@ final class TrackersViewController: UIViewController {
 //MARK: - NewTrackerViewControllerDelegate
 extension TrackersViewController: NewTrackerViewControllerDelegate {
     func addTracker() {
-        if stubView.isHidden == false {
+        if !stubView.isHidden {
             stubView.removeFromSuperview()
             addTrackersCollection()
         }
@@ -177,7 +177,7 @@ extension TrackersViewController {
     }
     
     private func addTrackersCollection() {
-        view.addSubview(trackersCollection)
+        view.addView(trackersCollection)
         
         NSLayoutConstraint.activate([
             trackersCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -188,7 +188,7 @@ extension TrackersViewController {
     }
     
     private func addStubView() {
-        view.addSubview(stubView)
+        view.addView(stubView)
         
         NSLayoutConstraint.activate([
             stubView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),

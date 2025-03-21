@@ -7,10 +7,10 @@ extension UITabBar {
         self.addView(subview)
         
         NSLayoutConstraint.activate([
-            subview.leftAnchor.constraint(equalTo: self.leftAnchor),
-            subview.rightAnchor.constraint(equalTo: self.rightAnchor),
+            subview.leftAnchor.constraint(equalTo: leftAnchor),
+            subview.rightAnchor.constraint(equalTo: rightAnchor),
             subview.heightAnchor.constraint(equalToConstant: thickness),
-            subview.topAnchor.constraint(equalTo: self.topAnchor)
+            subview.topAnchor.constraint(equalTo: topAnchor)
         ])
     }
 }

@@ -9,17 +9,9 @@ struct Tracker {
     let creationDate: Date?
     
     func isEmpty(type: TypeOfEventOrHabit) -> Bool {
-        if self.name != nil && !(self.name == "") && self.color != nil &&
-            self.emoji != nil && self.timetable != nil &&
-            !(self.timetable?.isEmpty ?? true) && type == .habit {
-            
-            return false
-        } else if self.name != nil && !(self.name == "") &&
-                    self.color != nil && self.emoji != nil && type == .event {
-            
-            return false
-        }
-        
-        return true
+        let hasRequiredFields = name?.isEmpty == false && color != nil && emoji != nil
+        let isHabitValid = hasRequiredFields && timetable?.isEmpty == false && type == .habit
+        let isEventValid = hasRequiredFields && type == .event
+        return !(isHabitValid || isEventValid)
     }
 }

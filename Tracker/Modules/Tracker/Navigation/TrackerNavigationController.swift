@@ -69,7 +69,7 @@ final class TrackerNavigationController: UINavigationController {
         viewController?.navigationItem.title = "Трекеры"
     }
     
-    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         viewController?.dateWasChanged(date: sender.date)
     }
     

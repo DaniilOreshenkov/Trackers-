@@ -131,9 +131,9 @@ final class NewHabitOrEventViewController: UIViewController,
     private func switchViewController() {
         switch typeTracker {
         case .habit:
-            title = R.Text.navTitle.habitTitle
+            title = R.Text.NavTitle.habitTitle
         case .event:
-            title = R.Text.navTitle.eventTitle
+            title = R.Text.NavTitle.eventTitle
         }
     }
     
@@ -167,8 +167,8 @@ final class NewHabitOrEventViewController: UIViewController,
     }
     
     @objc private func textChanged(_ textField: UITextField) {
-        
-        if  textField.text?.count ?? 0 <= 38 {
+        let maxNumber = 38
+        if  textField.text?.count ?? 0 <= maxNumber {
             hideWarning()
             tracker = Tracker(
                 id: tracker.id,

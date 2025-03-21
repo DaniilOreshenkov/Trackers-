@@ -67,10 +67,6 @@ extension HelperTrackersCollectionView: UICollectionViewDataSource {
             $0.id == tracker.id
         }.count
         
-        if tracker.timetable == nil {
-            
-        }
-        
         cell.delegate = self
         
         cell.configure(tracker: tracker, isCompleted: isCompleted, completedDays: completedDays, date: currentDate)
@@ -103,12 +99,8 @@ extension HelperTrackersCollectionView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if categories[section].trackers.isEmpty {
-            return CGSize(width: collectionView.frame.width, height: 0)
-        } else {
-            return CGSize(width: collectionView.frame.width, height: 19)
-        }
-        
+        CGSize(width: collectionView.frame.width,
+               height: categories[section].trackers.isEmpty ? 0 : 19)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
