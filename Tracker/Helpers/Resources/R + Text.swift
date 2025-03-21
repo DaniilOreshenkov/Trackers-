@@ -11,6 +11,8 @@ extension R {
         enum ButtonTitle {
             static let create = "Создать"
             static let cancel = "Отменить"
+            static let done = "Готово"
+            static let createCategory = "Добавить категорию"
         }
         
         static let tracker = "Трекеры"
@@ -18,6 +20,11 @@ extension R {
         static let statistic = "Статистика"
         
         static let textNoContent = "Что будем отслеживать?"
+        static let textNoCategory = "Привычки и события можно\nобъединить по смыслу"
         static let textNothingFound = "Ничего не найдено"
+        
+        static let category = "Категория"
+        static let newCategory = "Новая категория"
+        static let schedule = "Расписание"
     }
 }
