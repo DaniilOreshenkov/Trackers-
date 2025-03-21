@@ -4,7 +4,7 @@ final class CategoriesViewController: UIViewController, UINavigationControllerDe
     
     weak var delegate: CategoriesViewControllerDelegate?
     
-    var categories: [TrackerCategory] = TrackerViewController.categories
+    var categories: [TrackerCategory] = TrackersViewController.categories
     
     private var selectedCategory: TrackerCategory? = nil
     

@@ -27,10 +27,28 @@ final class TrackerNavigationController: UINavigationController {
         viewController = rootViewController
         setupAppearance()
         actionAddButton()
+        setDatePicker()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setDatePicker() {
+        let datePicker = UIDatePicker()
+        
+        datePicker.locale = Locale(identifier: "ru_RU")
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .compact
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        
+        datePicker.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        
+        datePicker.tintColor = R.ColorYP.blue
+        
+        viewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: datePicker)
     }
     
     private func setupAppearance() {
@@ -49,6 +67,10 @@ final class TrackerNavigationController: UINavigationController {
         viewController?.navigationItem.hidesSearchBarWhenScrolling = false
         viewController?.navigationItem.largeTitleDisplayMode = .always
         viewController?.navigationItem.title = "Трекеры"
+    }
+    
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+        viewController?.dateWasChanged(date: sender.date)
     }
     
     @objc private func actionAddButton() {

@@ -28,8 +28,8 @@ final class NewCategoriesViewController: UIViewController {
     
     @objc private func doneButtonTapped() {
         guard let text = textField.text else { return }
-        TrackerViewController.categories.append(TrackerCategory(title: text, trackers: []))
-        delegate?.categories = TrackerViewController.categories
+        TrackersViewController.categories.append(TrackerCategory(title: text, trackers: []))
+        delegate?.categories = TrackersViewController.categories
         delegate?.removeStubAndShowCategories()
         self.dismiss(animated: true)
     }

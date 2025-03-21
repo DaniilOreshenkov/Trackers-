@@ -12,7 +12,7 @@ final class NewHabitOrEventViewController: UIViewController,
                 color: tracker.color,
                 emoji: tracker.emoji,
                 timetable: new,
-                creationDate: TrackerViewController.currentDate)
+                creationDate: TrackersViewController.currentDate)
         }
     }
     var selectedCategory: TrackerCategory? = nil {
@@ -23,7 +23,7 @@ final class NewHabitOrEventViewController: UIViewController,
                 color: tracker.color,
                 emoji: tracker.emoji,
                 timetable: tracker.timetable,
-                creationDate: TrackerViewController.currentDate)
+                creationDate: TrackersViewController.currentDate)
         }
     }
     
@@ -33,7 +33,7 @@ final class NewHabitOrEventViewController: UIViewController,
         color: R.ColorYP.blue,
         emoji: "👻",
         timetable: nil,
-        creationDate: TrackerViewController.currentDate
+        creationDate: TrackersViewController.currentDate
     ) {
         willSet(newValue) {
             if !newValue.isEmpty(type: typeTracker) && selectedCategory != nil {
@@ -176,7 +176,7 @@ final class NewHabitOrEventViewController: UIViewController,
                 color: tracker.color,
                 emoji: tracker.emoji,
                 timetable: tracker.timetable,
-                creationDate: TrackerViewController.currentDate)
+                creationDate: TrackersViewController.currentDate)
         } else {
             showWarning()
             blockCreateButton()
@@ -193,12 +193,12 @@ final class NewHabitOrEventViewController: UIViewController,
             return
         }
         
-        let index = TrackerViewController.categories.firstIndex(of: newCategory)
+        let index = TrackersViewController.categories.firstIndex(of: newCategory)
         
         if let index = index {
-            TrackerViewController.categories[index] = newCategory
+            TrackersViewController.categories[index] = newCategory
         } else {
-            TrackerViewController.categories.append(newCategory)
+            TrackersViewController.categories.append(newCategory)
         }
         self.dismiss(animated: true)
         delegate?.addTracker()
