@@ -26,5 +26,7 @@ extension R {
         static let category = "Категория"
         static let newCategory = "Новая категория"
         static let schedule = "Расписание"
+        
+        static let color = "Цвет"
     }
 }

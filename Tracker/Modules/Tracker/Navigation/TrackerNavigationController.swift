@@ -20,9 +20,9 @@ final class TrackerNavigationController: UINavigationController {
         return searchController
     }()
     
-    weak var viewController: TrackerNavigationControllerDelegate?
+    weak var viewController: TrackersNavigationControllerDelegate?
     
-    init(rootViewController: TrackerNavigationControllerDelegate) {
+    init(rootViewController: TrackersNavigationControllerDelegate) {
         super.init(rootViewController: rootViewController)
         viewController = rootViewController
         setupAppearance()
