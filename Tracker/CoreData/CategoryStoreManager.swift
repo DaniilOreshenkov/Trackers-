@@ -1,4 +1,3 @@
-import UIKit
 import CoreData
 
 final class CategoryStoreManager: NSObject {
@@ -8,7 +7,7 @@ final class CategoryStoreManager: NSObject {
     
     private let categoryStore: TrackerCategoryStore
     private let context = DataManager.shared.persistentContainer.viewContext
-    private var insertedIndex: IndexPath? = nil
+    private var insertedIndex: IndexPath?
     
     private lazy var fetchedResultsController: NSFetchedResultsController<TrackerCategoryCoreData> = {
         

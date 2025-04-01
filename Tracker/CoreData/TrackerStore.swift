@@ -15,11 +15,11 @@ final class TrackerStore: NSObject {
     func create(tracker: Tracker, for category: TrackerCategory) {
         let trackerCoreData = TrackerCoreData(context: context)
         
-        let request1: NSFetchRequest<TrackerCategoryCoreData> = TrackerCategoryCoreData.fetchRequest()
+        let request: NSFetchRequest<TrackerCategoryCoreData> = TrackerCategoryCoreData.fetchRequest()
 
-        request1.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.title), category.title)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.title), category.title)
         
-        guard let trackerCategoryCoreData = try? context.fetch(request1) else {
+        guard let trackerCategoryCoreData = try? context.fetch(request) else {
             print("Categories core data is nil in create(tracker:)")
             return
         }
@@ -43,7 +43,7 @@ final class TrackerStore: NSObject {
         
         trackerCoreData.id = tracker.id
         trackerCoreData.name = tracker.name
-        trackerCoreData.color = convertColorToString(tracker.color!) // MARK: !
+        trackerCoreData.color = convertColorToString(tracker.color ?? UIColor())
         trackerCoreData.emoji = String(tracker.emoji ?? "⚙️")
         trackerCoreData.creationDate = tracker.creationDate
         

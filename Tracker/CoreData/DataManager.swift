@@ -11,7 +11,7 @@ final class DataManager {
               
         persistentContainer.loadPersistentStores { (_, error) in
             if let error = error {
-                fatalError("Error loading Persistent Stores: \(error)")
+                assertionFailure("Error loading Persistent Stores: \(error)")
             }
         }
     }

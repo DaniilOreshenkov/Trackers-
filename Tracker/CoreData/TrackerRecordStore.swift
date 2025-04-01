@@ -71,12 +71,14 @@ final class TrackerRecordStore: NSObject {
         
         let idPredicate = NSPredicate(format: "%K == %@", #keyPath(TrackerRecordCoreData.trackerId), id as CVarArg)
         let strippedTargetDate = stripTime(from: date) ?? Date()
+        
+        
         let datePredicate = NSPredicate(format: "date >= %@ AND date < %@",
                                         strippedTargetDate as CVarArg,
                                         Calendar.current.date(
                                             byAdding: .day,
                                             value: 1,
-                                            to: strippedTargetDate)! as CVarArg)
+                                            to: strippedTargetDate) as? CVarArg ?? Date() as CVarArg)
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [idPredicate, datePredicate])
         
         request.predicate = compoundPredicate

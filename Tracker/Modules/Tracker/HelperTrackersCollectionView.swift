@@ -26,8 +26,7 @@ final class HelperTrackersCollectionView: NSObject  {
     }
     
     private func isTrackerCompletedToday(id: UUID) -> Bool {
-        let completedTracker = trackerRecordStore.fetch(by: id, and: currentDate)
-        return completedTracker != nil ? true : false
+       trackerRecordStore.fetch(by: id, and: currentDate) != nil
     }
 }
 
