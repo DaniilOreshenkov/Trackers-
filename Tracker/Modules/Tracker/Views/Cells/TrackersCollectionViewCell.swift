@@ -87,7 +87,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         addButton.backgroundColor = color
     }
     
-    private func setEmoji(emoji: Character?) {
+    private func setEmoji(emoji: String?) {
         guard let emoji = emoji else { return }
         emojiView.changeEmoji(emoji: String(emoji))
     }
@@ -102,7 +102,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     
     private func setCompletedState(with count: Int) {
         addButton.layer.opacity = 0.3
-        addButton.setImage(R.ImagesYP.addIcon, for: .normal)
+        addButton.setImage(R.ImagesYP.checkmark, for: .normal)
         setDays(text: getDayText(number: count))
         isCompletedToday = true
     }
