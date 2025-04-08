@@ -2,7 +2,7 @@ import UIKit
 
 final class NewCategoriesViewController: UIViewController {
     
-    weak var delegate: NewCategoryViewControllerDelegate?
+    private let viewModel: CategoriesViewModelProtocol
     
     private let textField: TextFieldWithPadding = {
         let textField = TextFieldWithPadding()
@@ -15,6 +15,16 @@ final class NewCategoriesViewController: UIViewController {
     }()
     
     private let doneButton = MainButton(title: R.Text.ButtonTitle.done)
+    
+    init(viewModel: CategoriesViewModelProtocol) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +40,8 @@ final class NewCategoriesViewController: UIViewController {
         guard let text = textField.text else { return }
         let category = TrackerCategory(title: text, trackers: [])
         
-        delegate?.add(category: category)
+        viewModel.addCategory(category: category)
+        
         self.dismiss(animated: true)
     }
     
