@@ -1,11 +1,9 @@
 import UIKit
 
 final class NewHabitOrEventViewController: UIViewController,
-                                           ScheduleViewControllerDelegate2,
-                                           CategoriesViewControllerDelegate {
+                                           ScheduleViewControllerDelegate2, CategoriesViewControllerDelegate {
     
     private var colorTrackers = R.ColorYP.Tracker.trackers
-    
     
     var selectedDays = [Day]() {
         willSet(new) {
@@ -220,7 +218,6 @@ extension NewHabitOrEventViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: TrackerOptionTableViewCell.identifier,
@@ -229,6 +226,8 @@ extension NewHabitOrEventViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
+        
+        print(selectedCategory?.title)
         
         if indexPath.row == 0 {
             cell.configureCategory(subtitle: selectedCategory?.title ?? "")
@@ -254,8 +253,8 @@ extension NewHabitOrEventViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if typeTracker == .habit || typeTracker == .event, indexPath.row == 0 {
-            let categoriesVC = CategoriesViewController(delegate: self, selectedCategory: selectedCategory)
-
+            let categoriesVC = CategoriesViewController(selectedCategory: selectedCategory, delegate: self)
+            
             navigationController?.pushViewController(categoriesVC, animated: true)
         }
         
