@@ -100,8 +100,8 @@ final class NewHabitOrEventViewController: UIViewController,
         return collection
     }()
     
-    private let cancelButton = CancelButton(title: R.Text.ButtonTitle.cancel)
-    private let doneButton = MainButton(title: R.Text.ButtonTitle.create)
+    private let cancelButton = CancelButton(title: R.Text.ButtonTitle.cancel.value)
+    private let doneButton = MainButton(title: R.Text.ButtonTitle.create.value)
     
     private let buttonsStackView: UIStackView = {
         let stackView = UIStackView()
@@ -143,9 +143,9 @@ final class NewHabitOrEventViewController: UIViewController,
     private func switchViewController() {
         switch typeTracker {
         case .habit:
-            title = R.Text.NavTitle.habitTitle
+            title = R.Text.NavTitle.habit.value
         case .event:
-            title = R.Text.NavTitle.eventTitle
+            title = R.Text.NavTitle.event.value
         }
     }
     

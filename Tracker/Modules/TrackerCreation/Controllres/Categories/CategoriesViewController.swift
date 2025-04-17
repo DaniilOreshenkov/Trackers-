@@ -32,7 +32,7 @@ final class CategoriesViewController: UIViewController, UINavigationControllerDe
     private let stubView = NoContentView(text: R.Text.textNoCategory,
                                          image: R.ImagesYP.dizzy)
     
-    private let createButton = MainButton(title: R.Text.ButtonTitle.createCategory)
+    private let createButton = MainButton(title: R.Text.ButtonTitle.addCategory.value)
     
     override func viewDidLoad() {
         super.viewDidLoad()

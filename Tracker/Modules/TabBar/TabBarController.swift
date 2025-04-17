@@ -22,7 +22,7 @@ final class TabBarController: UITabBarController {
         let trackersVC = TrackersViewController()
         let trackersNavCon = TrackerNavigationController(rootViewController: trackersVC)
         trackersNavCon.tabBarItem = UITabBarItem(
-            title: R.Text.tracker,
+            title: R.Text.MainScreen.trackers.value,
             image: R.ImagesYP.TabBar.tracker,
             selectedImage: nil
         )
@@ -30,7 +30,7 @@ final class TabBarController: UITabBarController {
         let statistic = UIViewController()
         let statisticNav = UINavigationController(rootViewController: statistic)
         statisticNav.tabBarItem = UITabBarItem(
-            title: R.Text.statistic,
+            title: R.Text.MainScreen.statistic.value,
             image: R.ImagesYP.TabBar.statistic,
             selectedImage: nil
         )

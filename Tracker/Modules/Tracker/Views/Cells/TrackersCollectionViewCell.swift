@@ -103,18 +103,29 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     private func setCompletedState(with count: Int) {
         addButton.layer.opacity = 0.3
         addButton.setImage(R.ImagesYP.checkmark, for: .normal)
-        setDays(text: getDayText(number: count))
+//        setDays(text: getDayText(number: count))
+        setDays(text: localizedDaysString(count: count))
         isCompletedToday = true
     }
     
     private func setUncompletedState(with count: Int) {
         addButton.layer.opacity = 1
         addButton.setImage(R.ImagesYP.addIcon, for: .normal)
-        setDays(text: getDayText(number: count))
+//        setDays(text: getDayText(number: count))
+        setDays(text: localizedDaysString(count: count))
         isCompletedToday = false
     }
     
+    func localizedDaysString(count: Int) -> String {
+        return String.localizedStringWithFormat(
+            NSLocalizedString("daysCount", comment: "Days count string"),
+            count
+        )
+    }
+    
+    
     private func getDayText(number: Int) -> String {
+        
         let last = number % 10
         var text: String
         switch last {

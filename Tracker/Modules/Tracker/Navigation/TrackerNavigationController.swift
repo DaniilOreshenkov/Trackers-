@@ -12,8 +12,8 @@ final class TrackerNavigationController: UINavigationController {
     
     private let searchBar: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.placeholder = "Поиск"
-        searchController.searchBar.setValue("Отменить", forKey: "cancelButtonText")
+        searchController.searchBar.placeholder = R.Text.MainScreen.search.value
+        searchController.searchBar.setValue(R.Text.ButtonTitle.cancel.value, forKey: "cancelButtonText")
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.tintColor = R.ColorYP.blue
         searchController.searchBar.searchTextField.clearButtonMode = .never
@@ -66,7 +66,7 @@ final class TrackerNavigationController: UINavigationController {
         
         viewController?.navigationItem.hidesSearchBarWhenScrolling = false
         viewController?.navigationItem.largeTitleDisplayMode = .always
-        viewController?.navigationItem.title = "Трекеры"
+        viewController?.navigationItem.title = R.Text.MainScreen.trackers.value
     }
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {

@@ -27,7 +27,7 @@ final class ScheduleViewController: UIViewController {
         return tableView
     }()
     
-    private let doneButton = MainButton(title: R.Text.ButtonTitle.done)
+    private let doneButton = MainButton(title: R.Text.ButtonTitle.done.value)
     
     init(delegate: ScheduleViewControllerDelegate2? = nil, selectedDays: Set<Day>) {
         self.delegate = delegate
