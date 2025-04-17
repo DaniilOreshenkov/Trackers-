@@ -95,17 +95,24 @@ extension CategoriesViewController: UITableViewDataSource {
             cell.accessoryView = imageView
         }
         
-        if(categories.count == 1){
+        cell.layer.cornerRadius = 0
+        cell.layer.maskedCorners = []
+
+        let isFirst = indexPath.row == 0
+        let isLast = indexPath.row == categories.count - 1
+        let isSingle = categories.count == 1
+
+        if isSingle {
             cell.layer.cornerRadius = 16
-        } else if (indexPath.row == 0 && categories.count > indexPath.row) {
+            cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
+                                        .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        } else if isFirst {
             cell.layer.cornerRadius = 16
             cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        } else if (indexPath.row == categories.count-1 && categories.count != 0 ) {
+        } else if isLast {
             cell.layer.cornerRadius = 16
             cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
-        }  else {
-            cell.layer.cornerRadius = 0.0
         }
         
         return cell
