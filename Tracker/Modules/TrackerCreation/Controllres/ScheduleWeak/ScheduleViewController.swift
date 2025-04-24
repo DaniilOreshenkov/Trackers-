@@ -62,17 +62,18 @@ final class ScheduleViewController: UIViewController {
     }
     
     private func formatSelectedDays(days: Set<Day>) -> String {
-        if days.count == 7 {
-            return "Каждый день"
-        }
-        var values = [String]()
-        
-        for day in days {
-            values.append(day.rawValue)
-        }
-        let text = values.joined(separator: ", ")
-
-        return text
+//        if days.count == 7 {
+//            return "Каждый день"
+//        }
+//        var values = [String]()
+//        
+//        for day in days {
+//            values.append(day)
+//        }
+//        let text = values.joined(separator: ", ")
+//
+//        return text
+        "1"
     }
 
     

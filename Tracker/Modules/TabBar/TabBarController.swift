@@ -13,9 +13,10 @@ final class TabBarController: UITabBarController {
     // MARK: - Private Methods
     private func setupAppearance() {
         view.backgroundColor = R.ColorYP.whiteDynamic
+        tabBar.backgroundColor = R.ColorYP.whiteDynamic
         tabBar.isTranslucent = false
         tabBar.tintColor = R.ColorYP.blue
-        tabBar.addTopBorder(color: R.ColorYP.gray, thickness: 0.5)
+        tabBar.addTopBorder(color: R.ColorYP.separatorDynamic, thickness: 0.5)
     }
     
     private func setupTabBar() {
@@ -27,7 +28,7 @@ final class TabBarController: UITabBarController {
             selectedImage: nil
         )
         
-        let statistic = UIViewController()
+        let statistic = StatisticViewController()
         let statisticNav = UINavigationController(rootViewController: statistic)
         statisticNav.tabBarItem = UITabBarItem(
             title: R.Text.MainScreen.statistic.value,

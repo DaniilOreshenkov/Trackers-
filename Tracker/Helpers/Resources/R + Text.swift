@@ -53,6 +53,26 @@ extension R {
             }
         }
         
+        enum Filters: String {
+            case filters = "filters"
+            
+            var value: Swift.String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum ContextMenu: String {
+            case pin
+            case unpin
+            case delete
+            case edit
+            case pinned
+            
+            var value: Swift.String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
         static let placeholderNewTracker = "Введите название трекера"
         
         static let textNoContent = "Что будем отслеживать?"
