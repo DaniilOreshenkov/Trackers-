@@ -10,7 +10,7 @@ final class StatisticTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         label.textAlignment = .left
-        label.textColor = R.ColorYP.blackDynamic
+        label.textColor = R.ColorYP.white
         
         return label
     }()
@@ -19,7 +19,7 @@ final class StatisticTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .left
-        label.textColor = R.ColorYP.blackDynamic
+        label.textColor = R.ColorYP.white
         
         return label
     }()

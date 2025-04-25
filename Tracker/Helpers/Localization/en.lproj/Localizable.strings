@@ -9,10 +9,14 @@ statistic = "Statistic";
 search = "Search";
 
 // Statistic
-//trackersCompleted = "Trackers completed";
+trackersCompleted = "Trackers completed";
 
 // Filters
 filters = "Filters";
+allTrackers = "All trackers";
+trackersForToday = "Trackers for today";
+completed = "Completed";
+uncompleted = "Uncompleted";
 
 
 // Context menu
@@ -30,7 +34,7 @@ stub.categories = "Habits and events can be combined in meaning";
 stub.statistic = "There is nothing to analyze yet";
 
 // Messages
-//message.delete.tracker = "Are you sure you want to delete the tracker?";
+message.delete.tracker = "Are you sure you want to delete the tracker?";
 
 // Buttons
 save = "Save";

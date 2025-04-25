@@ -20,7 +20,7 @@ unpin = "Открепить";
 pinned = "Закрепленные";
 delete = "Удалить";
 edit = "Редактировать";
-back = "Отменить";
+//back = "Назад";
 
 // Stubs
 stub.search = "Ничего не найдено";
@@ -29,7 +29,7 @@ stub.categories = "Привычки и события можно\nобъедин
 stub.statistic = "Анализировать пока нечего";
 
 // Messages
-//message.delete.tracker = "Уверены, что хотите удалить трекер?";
+message.delete.tracker = "Уверены, что хотите удалить трекер?";
 
 // Buttons
 save = "Сохранить";

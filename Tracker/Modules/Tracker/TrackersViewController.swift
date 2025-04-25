@@ -59,7 +59,7 @@ final class TrackersViewController: UIViewController {
     )
     private let filtersStubView = NoContentView(
         text: "Ничего не найдено",
-        image: R.ImagesYP.image
+        image: R.ImagesYP.dizzy
     )
     
     // MARK: Life Cycle
