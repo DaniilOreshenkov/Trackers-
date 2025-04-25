@@ -58,7 +58,7 @@ final class TrackersViewController: UIViewController {
         image: R.ImagesYP.dizzy
     )
     private let filtersStubView = NoContentView(
-        text: "2",
+        text: "Ничего не найдено",
         image: R.ImagesYP.dizzy
     )
     

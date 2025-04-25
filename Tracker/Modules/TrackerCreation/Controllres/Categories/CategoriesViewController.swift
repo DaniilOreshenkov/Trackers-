@@ -55,6 +55,18 @@ final class CategoriesViewController: UIViewController, UINavigationControllerDe
         tableView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.categoriesBinding = { [weak self] _ in
+            guard let self = self else { return }
+            if self.stubView.isHidden == false {
+                self.stubView.removeFromSuperview()
+                self.setupSubviews()
+            }
+            
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
@@ -73,6 +85,7 @@ final class CategoriesViewController: UIViewController, UINavigationControllerDe
 extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.categories.count
+        print(viewModel.categories.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,11 +110,11 @@ extension CategoriesViewController: UITableViewDataSource {
         
         cell.layer.cornerRadius = 0
         cell.layer.maskedCorners = []
-
+        
         let isFirst = indexPath.row == 0
         let isLast = indexPath.row == categories.count - 1
         let isSingle = categories.count == 1
-
+        
         if isSingle {
             cell.layer.cornerRadius = 16
             cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
