@@ -200,7 +200,7 @@ extension HelperTrackersCollectionView: UICollectionViewDelegateFlowLayout {
                     
                     let actionSheet = DeleteActionSheet(
                         title: nil,
-                        message: "alertSheet",
+                        message: "Уверены что хотите удалить трекер?",
                         handler: actionHandler
                     )
                     
