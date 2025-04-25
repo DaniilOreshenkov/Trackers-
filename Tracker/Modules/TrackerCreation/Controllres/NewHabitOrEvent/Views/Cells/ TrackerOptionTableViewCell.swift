@@ -19,19 +19,14 @@ final class TrackerOptionTableViewCell: UITableViewCell {
     }
     
     func configureSchedule(days: [Day]) {
-        textLabel?.text = "Расписание"
+        textLabel?.text = "Расписание"        
         if days.count == 7 {
             detailTextLabel?.text = "Каждый день"
             return
         }
-        var values = [String]()
         
-        for day in days {
-            values.append(day.rawValue)
-            let text = values.joined(separator: ", ")
-            
-            detailTextLabel?.text = text
-        }
+        let values = days.map { Day.shortName(by: $0.rawValue) }
+        detailTextLabel?.text = values.joined(separator: ", ")
     }
     
     func configureCategory(subtitle: String) {

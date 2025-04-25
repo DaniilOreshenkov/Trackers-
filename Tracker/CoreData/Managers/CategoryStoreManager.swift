@@ -1,35 +1,35 @@
 import CoreData
 
+import UIKit
+import CoreData
+
 final class CategoryStoreManager: NSObject {
     // MARK: Properties
     
     weak var delegate: NewCategoryStoreManagerDelegate?
     
-    private let categoryStore: TrackerCategoryStore
+    private let categoryStore: CategoryStore
     private let context = DataManager.shared.persistentContainer.viewContext
-    private var insertedIndex: IndexPath?
-    private var fetchedResultsController: NSFetchedResultsController<TrackerCategoryCoreData>?
+    private var insertedIndex: IndexPath? = nil
+    
+    private var fetchedResultsController: NSFetchedResultsController<CategoryCoreData>!
     
     // MARK: Init
     
-    init(categoryStore: TrackerCategoryStore, delegate: NewCategoryStoreManagerDelegate) {
-        self.categoryStore = categoryStore
-        self.delegate = delegate
-    }
-    
-    init(categoryStore: TrackerCategoryStore) {
+    init(categoryStore: CategoryStore) {
         self.categoryStore = categoryStore
         super.init()
         
         createFetchedController()
     }
     
+    // MARK: Methods
     private func createFetchedController() {
-        let fetchRequest = NSFetchRequest<TrackerCategoryCoreData>(entityName: "TrackerCategoryCoreData")
+        let fetchRequest = NSFetchRequest<CategoryCoreData>(entityName: "CategoryCoreData")
         
-        let pinnedCategoryName = NSLocalizedString("pinned", comment: "")
+        let pinnedCategoryName = R.Text.ContextMenu.pinned.value
         fetchRequest.predicate = NSPredicate(format: "%K != %@",
-                                             #keyPath(TrackerCategoryCoreData.title),
+                                             #keyPath(CategoryCoreData.title),
                                              pinnedCategoryName)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
@@ -40,23 +40,21 @@ final class CategoryStoreManager: NSObject {
             cacheName: nil
         )
         
-        fetchedResultsController?.delegate = self
+        fetchedResultsController.delegate = self
         
         do {
-            try fetchedResultsController?.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             print("Cannot do performFetch for fetchedResultsController")
         }
     }
-    
-    // MARK: Methods
     
     func create(category: TrackerCategory) {
         categoryStore.create(category: category)
     }
     
     func fetchAll() -> [TrackerCategory] {
-        categoryStore.fetchAllCategories()
+        categoryStore.fetchAll()
     }
 }
 
@@ -87,24 +85,22 @@ extension CategoryStoreManager: NSFetchedResultsControllerDelegate {
     }
     
     var numberOfSections: Int {
-        fetchedResultsController?.sections?.count ?? 1
+        fetchedResultsController.sections?.count ?? 1
     }
     
     func numberOfRowsInSection(_ section: Int) -> Int {
-        fetchedResultsController?.sections?[section].numberOfObjects ?? 0
+        fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     func object(at indexPath: IndexPath) -> TrackerCategory? {
-        let category = fetchedResultsController?.object(at: indexPath)
-        guard let title = category?.title,
-              let trackersCoreData = category?.trackers?.allObjects as? [TrackerCoreData]
+        let category = fetchedResultsController.object(at: indexPath)
+        guard let title = category.title,
+              let trackersCoreData = category.trackers?.allObjects as? [TrackerCoreData]
         else {
             return nil
         }
-        let trackerStore = TrackerStore()
-        let trackers = trackersCoreData.map {
-            trackerStore.makeTracker(from: $0)
-        }
+        
+        let trackers = trackersCoreData.map { Tracker(coreDataTracker: $0) }
         
         return TrackerCategory(title: title, trackers: trackers)
     }

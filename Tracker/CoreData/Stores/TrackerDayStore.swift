@@ -1,3 +1,4 @@
+import UIKit
 import CoreData
 
 final class DaysStore {
@@ -29,11 +30,12 @@ final class DaysStore {
         let days = R.Mocks.weekdays
         days.forEach { day in
             let dayCoreData = DayCoreData(context: context)
-            dayCoreData.day = day.rawValue
+            dayCoreData.day = Day.shortName(by: day.rawValue)
             
             save()
         }
     }
+    
     
     private func createDaysIfNeeded() {
         let daysRequest = NSFetchRequest<DayCoreData>(entityName: "DayCoreData")
@@ -46,6 +48,8 @@ final class DaysStore {
         if days.isEmpty {
             createDays()
         }
+        
+        updateDays()
     }
     
     func fetchDay(with rawValue: String) -> DayCoreData? {
@@ -57,5 +61,31 @@ final class DaysStore {
         }
         
         return days.first
+    }
+    
+    private func deleteDays() {
+        let request = NSFetchRequest<DayCoreData>(entityName: "DayCoreData")
+        
+        guard let days = try? context.fetch(request) else {
+            return
+        }
+        
+        days.forEach {
+            context.delete($0)
+        }
+    }
+    
+    private func updateDays() {
+        let request = NSFetchRequest<DayCoreData>(entityName: "DayCoreData")
+        
+        guard let days = try? context.fetch(request) else {
+            return
+        }
+        
+        for i in 0..<7 {
+            days[i].day = R.Mocks.shortDays[i]
+        }
+        
+        save()
     }
 }
