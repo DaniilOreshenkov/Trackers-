@@ -17,7 +17,7 @@ final class FiltersViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        tableView.backgroundColor = .clear
         return tableView
     }()
     

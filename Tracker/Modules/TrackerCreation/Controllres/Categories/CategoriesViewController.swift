@@ -41,7 +41,7 @@ final class CategoriesViewController: UIViewController, UINavigationControllerDe
             guard let self = self else { return }
             if self.stubView.isHidden == false {
                 self.stubView.removeFromSuperview()
-                self.setupTableView()
+                self.setupSubviews()
             }
             
             self.tableView.reloadData()
